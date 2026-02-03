@@ -90,6 +90,17 @@ const ContactPage = () => {
           </div>
 
           <div className="lg:col-span-2">
+                                    {/* Status Messages */}
+            {status === 'success' && (
+              <div className="p-4 mb-6 text-sm text-smartGreen border border-smartGreen/30 bg-smartGreen/10 rounded-lg">
+                Thank you! Your message has been sent successfully. We will be in touch shortly.
+              </div>
+            )}
+            {status === 'error' && (
+              <div className="p-4 mb-6 text-sm text-red-700 border border-red-300 bg-red-100 rounded-lg">
+                Failed to send message. Please try again or email us directly at support@smartenv.com.
+              </div>
+            )}
             {!submitted ? (
               <form 
                 onSubmit={ handleSubmit }
@@ -139,7 +150,10 @@ const ContactPage = () => {
                 <button type="submit"
                 disabled={status === 'loading' || !isFormValid}
                  className={`w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-blue-500/30 hover:bg-blue-700 transition-all flex items-center justify-center space-x-3
-                 
+                   ${status === 'loading' || !isFormValid
+                    ? 'bg-green-400 cursor-not-allowed'
+                    : 'bg-black hover:bg-green-500 shadow-md shadow-smartGreen/30'
+                  }
                  `}>
                   {status === 'loading' ? 'Sending...' : 'Send Inquiry'}
                   <Send size={20} />

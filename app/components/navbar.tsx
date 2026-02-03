@@ -37,6 +37,7 @@ const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Resources', href: '/resources' },
     { name: 'Get Involved', href: '/join' },
   ];
     return(
