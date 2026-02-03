@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Book, FileText, Music, Download, CreditCard, Lock, CheckCircle } from 'lucide-react';
 import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 // --- Types ---
 type ResourceType = 'book' | 'journal' | 'hymnal';
@@ -193,6 +194,7 @@ export default function ResourceStore() {
           })}
         </div>
       </main>
+      <Footer/>
     </div>
   );
 }
