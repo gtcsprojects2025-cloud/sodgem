@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Book, FileText, Music, Download, CreditCard, Lock, CheckCircle } from 'lucide-react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import Image from 'next/image'
 
 // --- Types ---
 type ResourceType = 'book' | 'journal' | 'hymnal';
@@ -43,14 +44,7 @@ const resources: Resource[] = [
     price: 1000.00,
     description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
   },
-  {
-    id: '4',
-    title: 'The Power of Prayer',
-    type: 'book',
-    author: 'Deaconess Sarah',
-    price: 1000.00,
-    description: 'Understanding the spiritual mechanics of effective prayer.',
-  },
+
 ];
 
 export default function ResourceStore() {
@@ -75,7 +69,10 @@ export default function ResourceStore() {
     setTimeout(() => {
       setPurchasedIds((prev) => [...prev, resource.id]);
       setProcessingId(null);
-      alert(`Payment successful for: ${resource.title}. Download started.`);
+      // alert(`Payment successful for: ${resource.title}. Download started.`);
+      alert(`Kindly pay into the following Account: Name: SPRING OF DIVINE GRACE EVANGELICAL MISSION, ACC NO: 0065419075, BANK: STERLING BANK, AMOUNT:${resource.price}
+        After payment, check your mail for download link
+        `);
     }, 2000);
   };
 
@@ -100,6 +97,7 @@ export default function ResourceStore() {
             { id: 'all', label: 'All Items', icon: null },
             { id: 'book', label: 'Books', icon: <Book size={18} /> },
             { id: 'journal', label: 'Journals', icon: <FileText size={18} /> },
+            
             { id: 'hymnal', label: 'Hymnals', icon: <Music size={18} /> },
           ].map((tab) => (
             <button
@@ -132,8 +130,11 @@ export default function ResourceStore() {
                 <div className="h-48 bg-gray-200 flex items-center justify-center relative">
                     <div className="text-gray-400">
                         {resource.type === 'book' && <Book size={64} />}
+                        {resource.type === 'book' && <Image src="/bible_study.jpeg" width={500} height={500} alt="Picture of the author"  />}
                         {resource.type === 'journal' && <FileText size={64} />}
+                        {resource.type === 'journal' && <Image src="/prayer_journal.png" width={500} height={500} alt="Picture of the author" />}
                         {resource.type === 'hymnal' && <Music size={64} />}
+                        {resource.type === 'hymnal' && <Image src="/hymnal2.png" width={500} height={500} alt="Picture of the author" />}
                     </div>
                     <span className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-blue-900 uppercase tracking-wide">
                         {resource.type}
@@ -155,7 +156,7 @@ export default function ResourceStore() {
                     {isPurchased ? (
                       <button 
                         className="w-full bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors"
-                        onClick={() => alert('Download starting...')}
+                        onClick={() => alert('Check your email for download link...')}
                       >
                         <Download size={20} />
                         Download Now
