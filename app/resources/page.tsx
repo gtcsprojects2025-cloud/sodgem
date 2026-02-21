@@ -70,9 +70,17 @@ export default function ResourceStore() {
       setPurchasedIds((prev) => [...prev, resource.id]);
       setProcessingId(null);
       // alert(`Payment successful for: ${resource.title}. Download started.`);
-      alert(`Kindly pay into the following Account: Name: SPRING OF DIVINE GRACE EVANGELICAL MISSION, ACC NO: 0065419075, BANK: STERLING BANK, AMOUNT:${resource.price}
-        After payment, check your mail for download link
-        `);
+      alert(`Kindly pay into the following Account:
+
+Name: SPRING OF DIVINE GRACE EVANGELICAL MISSION
+ACC NO: 0065419075
+BANK: STERLING BANK
+AMOUNT: ${resource.price}
+
+After payment, email us the receipt to:
+info@springsofdivinegrace.com
+
+We will immediately send you the download link.`);
     }, 2000);
   };
 
