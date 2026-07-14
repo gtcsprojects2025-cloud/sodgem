@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {  Users,  CheckCircle2, Phone, Mail, Send, Globe } from 'lucide-react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-
+import {FaInstagram, FaFacebook, FaTwitter, FaYoutube} from 'react-icons/fa'
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({name: '',  email: '', message: '' })
@@ -38,6 +38,25 @@ const ContactPage = () => {
      };
      const isFormValid = formData.name && formData.email && formData.message;
 
+       const socials = [
+         {
+           name: 'Facebook',
+           href: 'https://www.facebook.com/sodgem',
+           icon: FaFacebook,
+         },
+     
+         {
+           name: 'Instagram',
+           href: 'https://www.instagram.com/springofdivinegrace',
+           icon: FaInstagram,
+         },
+         {
+           name: 'Youtube',
+           href: 'https://www.youtube.com/@sodgem',
+           icon: FaYoutube,
+         }
+       ]
+
   return (
     <main className="pt-0">
         <Navbar/>
@@ -48,9 +67,13 @@ const ContactPage = () => {
             <p className="text-xl text-slate-400">For questions, prayer requests, or general inquiries, reach out to us through the appropriate channel below.</p>
           </div>
           <div className="flex space-x-4 pb-4">
-            <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all"><Globe /></div>
-            <div className="w-14 h-14 bg-white/10 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transition-all"><Users /></div>
+            {socials.map((social, i) => (
+              <a key={i} href={social.href} target='_blank' className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+                <social.icon size={20} />
+              </a>
+            ))}
           </div>
+
         </div>
       </header>
 
