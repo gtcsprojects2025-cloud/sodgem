@@ -1,8 +1,28 @@
 
 "use client"
 import {  Heart,  Users,  MapPin,  Globe,} from 'lucide-react';
+import {FaInstagram, FaFacebook, FaTwitter, FaYoutube} from 'react-icons/fa'
 
 const Footer = ()=>{
+
+  const socials = [
+    {
+      name: 'Facebook',
+      href: 'https://www.facebook.com/sodgem',
+      icon: FaFacebook,
+    },
+
+    {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/springofdivinegrace',
+      icon: FaInstagram,
+    },
+    {
+      name: 'Youtube',
+      href: 'https://www.youtube.com/@sodgem',
+      icon: FaYoutube,
+    }
+  ]
     return(
         <>
                   {/* Footer */}
@@ -18,9 +38,9 @@ const Footer = ()=>{
                 Awakening restoration and raising whole people for global kingdom impact.
               </p>
               <div className="flex space-x-3">
-                {[Globe, Users, Heart].map((Icon, i) => (
-                  <a key={i} href="#" className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
-                    <Icon size={20} />
+                {socials.map((social, i) => (
+                  <a key={i} href={social.href} target='_blank' className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+                    <social.icon size={20} />
                   </a>
                 ))}
               </div>
