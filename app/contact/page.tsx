@@ -1,12 +1,17 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import {  Users,  CheckCircle2, Phone, Mail, Send, Globe } from 'lucide-react';
-import Navbar from '../components/navbar';
-import Footer from '../components/footer';
-import {FaInstagram, FaFacebook, FaTwitter, FaYoutube} from 'react-icons/fa'
+"use client";
+import React, { useState } from "react";
+import { CheckCircle2, Phone, Mail, Send } from "lucide-react";
+import Navbar from "../components/navbar";
+import Footer from "../components/footer";
+import { FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({name: '',  email: '', message: '' })
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+    website: "",
+  });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
       const handleChange = ( e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ) => {
         setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value, })); };
@@ -26,7 +31,7 @@ const ContactPage = () => {
    
          if (response.ok) {
            setStatus('success');
-           setFormData({ name: '', email: '',  message: '' }); // Clear form
+           setFormData({ name: '', email: '', message: '', website: '' }); // Clear form
            setSubmitted(true)
          } else {
            setStatus('error');
@@ -68,7 +73,14 @@ const ContactPage = () => {
           </div>
           <div className="flex space-x-4 pb-4">
             {socials.map((social, i) => (
-              <a key={i} href={social.href} target='_blank' className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all">
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-blue-600 hover:text-white transition-all"
+              >
                 <social.icon size={20} />
               </a>
             ))}
@@ -114,14 +126,10 @@ const ContactPage = () => {
 
           <div className="lg:col-span-2">
                                     {/* Status Messages */}
-            {status === 'success' && (
-              <div className="p-4 mb-6 text-sm text-smartGreen border border-smartGreen/30 bg-smartGreen/10 rounded-lg">
-                Thank you! Your message has been sent successfully. We will be in touch shortly.
-              </div>
-            )}
             {status === 'error' && (
               <div className="p-4 mb-6 text-sm text-red-700 border border-red-300 bg-red-100 rounded-lg">
-                Failed to send message. Please try again or email us directly at support@smartenv.com.
+                Failed to send message. Please try again or email us directly
+                at info@springsofdivinegrace.com.
               </div>
             )}
             {!submitted ? (
@@ -170,12 +178,23 @@ const ContactPage = () => {
                   className="w-full px-6 py-4 rounded-2xl bg-slate-50 border-0 focus:ring-2 focus:ring-blue-600 transition-all font-medium resize-none"
                    ></textarea>
                 </div>
+                {/* Honeypot field to deter bots (hidden from humans) */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                />
                 <button type="submit"
                 disabled={status === 'loading' || !isFormValid}
                  className={`w-full bg-blue-600 text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-blue-500/30 hover:bg-blue-700 transition-all flex items-center justify-center space-x-3
                    ${status === 'loading' || !isFormValid
-                    ? 'bg-green-400 cursor-not-allowed'
-                    : 'bg-black hover:bg-green-500 shadow-md shadow-smartGreen/30'
+                    ? 'opacity-60 cursor-not-allowed'
+                    : 'hover:bg-blue-700'
                   }
                  `}>
                   {status === 'loading' ? 'Sending...' : 'Send Inquiry'}

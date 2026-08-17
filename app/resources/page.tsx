@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import { Book, FileText, Music, Download, CreditCard, Lock, CheckCircle } from 'lucide-react';
+import { Book, FileText, Music, Download, CreditCard, Lock } from "lucide-react";
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import Image from 'next/image'
@@ -16,6 +16,8 @@ interface Resource {
   author: string;
   price: number; // Price in your currency (e.g., USD, NGN)
   description: string;
+  image: string;
+  alt: string;
 }
 
 // --- Mock Data ---
@@ -27,6 +29,8 @@ const resources: Resource[] = [
     author: 'Pastor John Doe',
     price: 10000.00,
     description: 'A comprehensive guide to strengthening your daily walk with God.',
+    image: '/bible_study.jpeg',
+    alt: 'Walking in Faith book cover',
   },
   {
     id: '2',
@@ -35,6 +39,8 @@ const resources: Resource[] = [
     author: 'Editorial Team',
     price: 2000.50,
     description: 'Reflections, prayer points, and community updates for January.',
+    image: '/prayer_journal.png',
+    alt: 'Sodgem Monthly Journal - January cover',
   },
   {
     id: '3',
@@ -43,6 +49,8 @@ const resources: Resource[] = [
     author: 'Sodgem Choir',
     price: 1000.00,
     description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/hymnal2.png',
+    alt: 'Songs of Deliverance hymnal cover',
   },
 
 ];
@@ -135,16 +143,20 @@ We will immediately send you the download link.`);
                 className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-lg transition-shadow duration-300 flex flex-col"
               >
                 {/* Card Header / Image Placeholder */}
-                <div className="h-48 bg-gray-200 flex items-center justify-center relative">
-                    <div className="text-gray-400">
+                <div className="relative h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
+                    <div className="text-gray-400 z-10">
                         {resource.type === 'book' && <Book size={64} />}
-                        {resource.type === 'book' && <Image src="/bible_study.jpeg" width={500} height={500} alt="Picture of the author"  />}
                         {resource.type === 'journal' && <FileText size={64} />}
-                        {resource.type === 'journal' && <Image src="/prayer_journal.png" width={500} height={500} alt="Picture of the author" />}
                         {resource.type === 'hymnal' && <Music size={64} />}
-                        {resource.type === 'hymnal' && <Image src="/hymnal2.png" width={500} height={500} alt="Picture of the author" />}
                     </div>
-                    <span className="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-blue-900 uppercase tracking-wide">
+                    <Image
+                        src={resource.image}
+                        alt={resource.alt}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover"
+                    />
+                    <span className="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-blue-900 uppercase tracking-wide">
                         {resource.type}
                     </span>
                 </div>
