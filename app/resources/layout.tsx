@@ -44,6 +44,17 @@ const itemListJsonLd = {
         description: "Digital lyrics and sheet music for 50 beloved hymns.",
       },
     },
+
+    {
+      "@type": "ListItem",
+      position: 4,
+      item: {
+        "@type": "MusicComposition",
+        name: "Songs of Deliverance",
+        composer: { "@type": "Organization", name: "SODGEM Choir" },
+        description: "Digital lyrics and sheet music for 50 beloved hymns.",
+      },
+    },
   ],
 };
 

@@ -42,14 +42,113 @@ const resources: Resource[] = [
     image: '/prayer_journal.png',
     alt: 'Sodgem Monthly Journal - January cover',
   },
-  {
+  // {
+  //   id: '3',
+  //   title: 'Songs of Deliverance',
+  //   type: 'hymnal',
+  //   author: 'Sodgem Choir',
+  //   price: 1000.00,
+  //   description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+  //   image: '/hymnal2.png',
+  //   alt: 'Songs of Deliverance hymnal cover',
+  // },
+
+    {
     id: '3',
-    title: 'Songs of Deliverance',
+    title: 'Bible Study Guide: Fruitful in Every Good Work',
+    type: 'book',
+    author: 'Sodgem Choir',
+    price: 1000.00,
+    description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/fruitful.png',
+    alt: 'Songs of Deliverance hymnal cover',
+  },
+
+      {
+    id: '4',
+    title: 'Spring of Divine Grace Evangelical Mission Hymnal',
     type: 'hymnal',
     author: 'Sodgem Choir',
     price: 1000.00,
     description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
     image: '/hymnal2.png',
+    alt: 'Songs of Deliverance hymnal cover',
+  },
+
+      {
+    id: '5',
+    title: 'Code of Conduct for Ministers and Workers',
+    type: 'book',
+    author: 'Sodgem Choir',
+    price: 1000.00,
+    description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/coc.png',
+    alt: 'Songs of Deliverance hymnal cover',
+  },
+
+  //     {
+  //   id: '6',
+  //   title: 'Spring of Divine Grace Evangelical Mission 2026 Prayer Journal, Planner & Calendar',
+  //   type: 'hymnal',
+  //   author: 'Sodgem Choir',
+  //   price: 1000.00,
+  //   description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+  //   image: '/prayer_journal.png',
+  //   alt: 'Songs of Deliverance hymnal cover',
+  // },
+
+      {
+    id: '6',
+    title: 'SODGEM Marriage Manual',
+    type: 'book',
+    author: 'Sodgem Choir',
+    price: 1000.00,
+    description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/MM.png',
+    alt: 'Songs of Deliverance hymnal cover',
+  },
+
+        {
+    id: '7',
+    title: 'Church Prospectus',
+    type: 'book',
+    author: 'Sodgem Choir',
+    price: 1000.00,
+    description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/prospectus.png',
+    alt: 'Songs of Deliverance hymnal cover',
+  },
+
+        {
+    id: '8',
+    title: 'As God Designed It: The Covenant of Marriage: A Biblical Guide to Building a Godly Marriage',
+    type: 'book',
+    author: 'Sodgem Choir',
+    price: 1000.00,
+    description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/MM.png',
+    alt: 'Songs of Deliverance hymnal cover',
+  },
+
+  {
+    id: '9',
+    title: 'SODGEM Constitution and Byelaws',
+    type: 'book',
+    author: 'Sodgem Choir',
+    price: 1000.00,
+    description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/constitution.png',
+    alt: 'Songs of Deliverance hymnal cover',
+  },
+
+    {
+    id: '10',
+    title: 'Midweek Bible Study Manual: The Power of the Word',
+    type: 'book',
+    author: 'Sodgem Choir',
+    price: 1000.00,
+    description: 'Digital lyrics and sheet music for our 50 most beloved hymns.',
+    image: '/bible_manual.png',
     alt: 'Songs of Deliverance hymnal cover',
   },
 
@@ -145,16 +244,16 @@ We will immediately send you the download link.`);
                 {/* Card Header / Image Placeholder */}
                 <div className="relative h-48 bg-gray-200 flex items-center justify-center overflow-hidden">
                     <div className="text-gray-400 z-10">
-                        {resource.type === 'book' && <Book size={64} />}
-                        {resource.type === 'journal' && <FileText size={64} />}
-                        {resource.type === 'hymnal' && <Music size={64} />}
+                        {resource.type === 'book' }
+                        {resource.type === 'journal' }
+                        {resource.type === 'hymnal' }
                     </div>
                     <Image
                         src={resource.image}
                         alt={resource.alt}
                         fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        className="object-cover"
+                        className="object-contain"
                     />
                     <span className="absolute top-4 right-4 z-20 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-blue-900 uppercase tracking-wide">
                         {resource.type}
