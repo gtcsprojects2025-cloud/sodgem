@@ -60,8 +60,8 @@ const branches = [
     address: "No. 25, Beside Ijaya House, Ewuga, Sagamu, Ogun State",
   },
   {
-    name: "Ayepa Branch",
-    address: "No. 29 Fowoseje Street, Off Ayepa Road, Sagamu, Ogun State",
+    name: "Ayepe Branch",
+    address: "No. 29 Fowoseje Street, Off Ayepe Road, Sagamu, Ogun State",
   },
 ];
 
