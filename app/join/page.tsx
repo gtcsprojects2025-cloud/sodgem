@@ -3,9 +3,8 @@ import type { Metadata } from "next";
 import { Clock, MapPin, Zap } from "lucide-react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
-import Link from "next/link";
+import TrackedLink from "../components/tracked-link";
 import { siteConfig } from "@/lib/site";
-import {sendGAEvent} from "@next/third-parties/google"
 
 export const metadata: Metadata = {
   title: "Get Involved — Service Times & Locations",
@@ -157,20 +156,20 @@ export default function GetInvolvedPage() {
               the kingdom, or simply want to volunteer, we have a place for you.
             </p>
             <div className="grid grid-cols-2 gap-4">
-              <Link
-           
+              <TrackedLink
+                eventValue="volunteer"
                 href="/contact"
                 className="bg-white text-slate-900 py-4 rounded-2xl pl-10 font-bold hover:bg-blue-100 transition-all"
               >
                 Volunteer
-              </Link>
-              <Link
-
+              </TrackedLink>
+              <TrackedLink
+                eventValue="support_missions"
                 href="/contact"
                 className="bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all text-center"
               >
                 Support Missions
-              </Link>
+              </TrackedLink>
             </div>
           </div>
         </div>
