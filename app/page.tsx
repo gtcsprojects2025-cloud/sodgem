@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { sendGAEvent } from '@next/third-parties/google'
 import {
   Heart,
   Users,
@@ -72,12 +73,24 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
               <Link
                 href="/join"
+                onClick={() =>
+                  sendGAEvent('event', 'button_click', {
+                    value: 'Join Us This Sunday',
+                    // any other parameters
+                  })
+                }
                 className="bg-blue-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-blue-700 transition-all flex items-center justify-center space-x-3 shadow-2xl shadow-blue-600/30 group"
               >
                 <span>Join Us This Sunday</span>
                 <ChevronRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a
+              <Link
+              onClick={() =>
+                  sendGAEvent('event', 'button_click', {
+                    value: 'Watch Latest Message',
+                    // any other parameters
+                  })
+                }
                 href="https://www.youtube.com/watch?v=rXzNPL2uou0"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -85,7 +98,7 @@ export default function HomePage() {
               >
                 <Play size={20} fill="currentColor" />
                 <span>Latest Message</span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

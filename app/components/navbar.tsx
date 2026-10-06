@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-
+import {sendGAEvent} from "@next/third-parties/google"
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -61,6 +61,12 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-10">
           {navLinks.map((link) => (
             <Link
+            onClick={() =>
+              sendGAEvent('event', 'button_click', {
+                value: `${link.name}`,
+                // any other parameters
+              })
+            }
               key={link.name}
               href={link.href}
               className={`text-sm font-bold uppercase tracking-wider transition-all hover:translate-y-[-1px] ${

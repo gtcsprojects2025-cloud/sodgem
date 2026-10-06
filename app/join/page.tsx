@@ -4,6 +4,7 @@ import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
+import {sendGAEvent} from "@next/third-parties/google"
 
 export const metadata: Metadata = {
   title: "Get Involved — Service Times & Locations",
@@ -156,12 +157,24 @@ export default function GetInvolvedPage() {
             </p>
             <div className="grid grid-cols-2 gap-4">
               <Link
+                onClick={() =>
+                  sendGAEvent('event', 'button_click', {
+                    value: 'Volunteer',
+                    // any other parameters
+                  })
+                }
                 href="/contact"
                 className="bg-white text-slate-900 py-4 rounded-2xl pl-10 font-bold hover:bg-blue-100 transition-all"
               >
                 Volunteer
               </Link>
               <Link
+                onClick={() =>
+                  sendGAEvent('event', 'button_click', {
+                    value: 'Support Missions',
+                    // any other parameters
+                  })
+                }
                 href="/contact"
                 className="bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all text-center"
               >
