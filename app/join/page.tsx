@@ -1,3 +1,4 @@
+'use client';
 import type { Metadata } from "next";
 import { Clock, MapPin, Zap } from "lucide-react";
 import Navbar from "../components/navbar";
